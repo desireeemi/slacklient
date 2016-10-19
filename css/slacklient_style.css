@@ -1,0 +1,5 @@
+#message-zone{
+    border: 2px black;
+    height: 100px;
+    width: calc(100% - 35px);
+}
