@@ -12,9 +12,11 @@
 	<aside id="secondary" class="sidebar widget-area" role="complementary">
 		<section id="messagerie" class="widget">
 			<h4>Vous avez une question ? Par içi.</h4>
-			<div id="message-zone"><p>lol</p></div>
-			<textarea>Composez votre message</textarea>
-			<input type="button" value="envoyer">
+			<textarea rows='10' id="message-zone" readonly></textarea>
+			<form method="post" id="sendMessage" class="search-form" action="sendMessage.php">
+				<textarea id='messageContent'placeholder="Composez votre message"></textarea>
+				<input type="submit" value="envoyer">
+			</form>
 		</section>
 		<?php dynamic_sidebar( 'sidebar-1' ); ?>
 	</aside><!-- .sidebar .widget-area -->
