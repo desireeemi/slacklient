@@ -18,21 +18,21 @@ add_action( 'wp_enqueue_scripts', 'mes_assets' );
 
 function mon_action() {
 
+
     $post = [
-        'username' => 'user1',
-        'password' => 'passuser1',
-        'gender'   => 1,
+        'username' => $_POST['userName'],
+        'text' => $_POST['messageContent'],
     ];
 //
 //    $test = json_encode($post);
 
     $ch = curl_init('https://hooks.slack.com/services/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');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-    
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post));
+
 
 // execute!
-    $response = curl_exec($ch);
+//    $response = curl_exec($ch);
 
     if(!curl_exec($ch)){
         die('Error: "' . curl_error($ch) . '" - Code: ' . curl_errno($ch));
@@ -40,17 +40,17 @@ function mon_action() {
 // close the connection, release resources used
     curl_close($ch);
 
-// do anything you want with your response
-    var_dump($response);
-
-
-
-
-//    var_dump($test);
-    var_dump($_POST);
-//    json_encode($_POST);
+//// do anything you want with your response
+//    var_dump($response);
+//
+//
+//
+//
+////    var_dump($test);
 //    var_dump($_POST);
-    die();
+////    json_encode($_POST);
+////    var_dump($_POST);
+//    die();
 }
 
 add_action( 'wp_ajax_post_slack', 'mon_action' );
